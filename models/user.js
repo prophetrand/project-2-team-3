@@ -36,10 +36,19 @@ module.exports = function(sequelize, DataTypes) {
     User.prototype.validPassword = function(password) {
         return bcrypt.compareSync(password, this.password);
       };
+      
       // Password hashing functionality
-    User.addHook("beforeCreate", function(user) {
+      User.addHook("beforeCreate", function(user) {
     user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
     });
+
+    User.prototype.all = function() {
+        User.findAll({
+            attributes: ['username', 'profPic', 'interests', 'bio']
+        });
+    }
+
+
 
     return User;
 }

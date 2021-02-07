@@ -21,6 +21,8 @@ module.exports = function(app) {
     });
 
     app.get("/connect", isAuthenticated, function(req, res) {
-
+        
+        
+        res.render("connect", User);
     });
 }
