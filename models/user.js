@@ -46,7 +46,7 @@ module.exports = function(sequelize, DataTypes) {
         User.findAll({
             attributes: ['username', 'profPic', 'interests', 'bio']
         });
-    }
+    };
 
 
 
