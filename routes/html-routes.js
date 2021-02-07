@@ -1,4 +1,5 @@
 var path = require("path");
+var User = require("../models/user")
 
 var isAuthenticated = require("../config/middleware/isAuthenticated");
 
@@ -20,12 +21,12 @@ module.exports = function(app) {
 
     });
 
-    app.get("/connect", isAuthenticated, function(req, res) {
+    app.get("/connect", function(req, res) {
         User.all(function(data){
             var userObj = {
                 user: data
             };
-
+            console.log("HERE");
             res.render("connect", userObj);
         });
     });
