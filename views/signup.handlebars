@@ -1,9 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <a class="nav-link active" aria-current="page" href="#">Home</a>
@@ -14,3 +10,27 @@
     </div>
   </div>
 </nav>
+
+<div class="container">
+  <div class="row justify-content-md-center mt-3">
+    <div class="col-md-6 border border-4 rounded">
+      <h2>Signup</h2>
+      
+      <form class="login mb-3">
+        <div class="form-group">
+          <label for="userInput">Username</label>
+          <input type="email" class="form-control" id="user-input" placeholder="Username">
+        </div><br />
+        <div class="form-group">
+          <label for="passInput">Password</label>
+          <input type="password" class="form-control" id="password-input" placeholder="Password">
+        </div><br />
+        <button type="submit" class="btn btn-outline-success">Register</button>
+        <span class="fst-italic text-muted">Already have an account? Log in <a href="/login">here</a></span>
+      </form>
+      
+    </div>
+  </div>
+</div>
+
+<script src="/public/assets/js/signup.js"></script>

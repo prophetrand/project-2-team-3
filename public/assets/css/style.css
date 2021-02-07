@@ -1,0 +1,12 @@
+body {
+  background-color: snow;
+}
+
+.navbar {
+  background-color: #AFC4C0;
+}
+
+form.signup,
+form.login {
+  margin-top: 30px;
+}
