@@ -21,7 +21,7 @@ module.exports = function(app) {
     });
 
     app.get("/api/signup", passport.authenticate("local"), function(req, res) {
-        
+        // check against Passport Authenticator to see if this route and /api/login routes should actually be GET requests, or if I should change em to POST.
     });
 
     app.get("/api/user", function(req, res) {
