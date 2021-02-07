@@ -1,5 +1,6 @@
 var express = require("express");
 var session = require("express-session");
+var exphbs = require("express-handlebars");
 
 var passport = require("./config/passport");
 
@@ -11,6 +12,9 @@ var app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
+
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
 
 // Initializing session to keep track of user's login session
 app.use(session({ secret: "happy dog", resave: true, saveUninitialized: true }));

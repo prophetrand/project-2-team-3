@@ -18,7 +18,7 @@ module.exports = function(app) {
 
     app.get("/signup", function(req, res) {
         
-
+        res.render("signup");
         // console.log(object);
         // res.render("signup", object);
     });
