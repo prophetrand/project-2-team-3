@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    var Matches = sequelize.define("Matches", {
+    var User_interests = sequelize.define("User_interests", {
         user_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -12,5 +12,5 @@ module.exports = function(sequelize, DataTypes) {
         freezeTableName: true
     });
 
-    return Matches;
+    return User_interests;
 };
