@@ -16,12 +16,12 @@ module.exports = function(app) {
           });
     });
 
-    app.get("/api/login", passport.authenticate("local"), function(req, res) {
+    app.post("/api/login", passport.authenticate("local"), function(req, res) {
         res.json(req.user);
     });
 
-    app.get("/api/signup", passport.authenticate("local"), function(req, res) {
-        // check against Passport Authenticator to see if this route and /api/login routes should actually be GET requests, or if I should change em to POST.
+    app.post("/api/signup", passport.authenticate("local"), function(req, res) {
+    
     });
 
     app.get("/api/user", function(req, res) {
