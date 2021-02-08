@@ -36,16 +36,3 @@ module.exports = function(app) {
         });
     });
 }
-
-// User.prototype.all = function() {
-//     User.findAll({
-//         attributes: ['username', 'profPic', 'interests', 'bio']
-//     }).then(res => {
-//         var userObj = {
-//             user: res
-//         };
-        
-//         return userObj;
-//     })
-    
-// };
