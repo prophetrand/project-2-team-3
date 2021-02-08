@@ -20,7 +20,7 @@ module.exports = function(app) {
         res.json(req.user);
     });
 
-    app.post("/api/signup", passport.authenticate("local"), function(req, res) {
+    app.post("/api/signup", function(req, res) {
     
     });
 
@@ -41,13 +41,6 @@ module.exports = function(app) {
     });
 
     app.get("/api/matches/:id", function(req, res) {
-
-    });
-
-    app.post("/api/user/:id", function(req, res) {
-
-        // Update user bio, interests, picture
-        // Updates the matches model
 
     });
 }

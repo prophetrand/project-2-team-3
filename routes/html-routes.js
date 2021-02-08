@@ -9,7 +9,7 @@ module.exports = function(app) {
         res.render("login");
     });
 
-    app.get("/profile/user/:id", isAuthenticated, function(req, res) {
+    app.get("/profile", function(req, res) {
 
     });
 
@@ -17,11 +17,12 @@ module.exports = function(app) {
         res.render("signup");
     });
 
-    app.get("/matches", isAuthenticated, function(req, res) {
+    app.get("/matches", function(req, res) {
 
     });
 
-    app.get("/connect", isAuthenticated, function(req, res) {
+    app.get("/connect", function(req, res) {
 
     });
 }
+// be sure to add back in "isAunthenticated" to routes that we want restricted.
