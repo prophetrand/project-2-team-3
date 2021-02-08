@@ -36,6 +36,17 @@
           <label for="passInput">Password</label>
           <input type="password" class="form-control" id="pass-input" placeholder="Password">
         </div><br />
+        <div class="form-group">
+          <label for="bioInput">Write a short bio about yourself...</label>
+          <input type="text" class="form-control" id="bio-input" placeholder="I'm an aspiring web developer who goes outside sometimes.">
+        </div><br />
+
+        {{!-- form-group below should be checkboxes, look into Bootstrap docs (sent in Slack by Jessny) for how to include them in the form. Might be helpful to check out Jessny's branch too. --}}
+        {{!-- <div class="form-group">
+          <label for="passInput">Password</label>
+          <input type="password" class="form-control" id="pass-input" placeholder="Password">
+        </div><br /> --}}
+
         <button type="submit" class="btn btn-outline-success">Register</button>
         <span class="fst-italic text-muted">Already have an account? Log in <a href="/">here</a></span>
       </form>
