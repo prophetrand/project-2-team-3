@@ -43,7 +43,14 @@ module.exports = function(app) {
     });
 
     app.post("/api/user", function(req, res) {
-
+      db.User.create({
+        profPic: req.body.profPic,
+        interests: req.body.interests,
+        bio: req.body.bio
+      })
+      .then(function(dbUser) {
+        res.json(dbUser);
+      });
     });
 
     app.get("/api/connect", function(req, res) {
