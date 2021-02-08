@@ -25,7 +25,21 @@ module.exports = function(app) {
     });
 
     app.get("/api/user", function(req, res) {
+      db.User.findAll({})
+      .then(function(dbUser) {
+        res.json(dbUser);
+      });
+    });
 
+    app.post("/api/user/find", function(req, res) {
+      db.User.findAll({
+        where: {
+          interests: req.body.choice
+        }
+      }).then(function(users) {
+        console.log(users);
+        res.json(users);
+      });
     });
 
     app.get("/api/user/:id", function(req, res) {

@@ -3,7 +3,7 @@ $(document).ready(function() {
 
     interest.on("click", function() {
         var choice = this.getAttribute('data-choice');
-        console.log(choice);
+        // console.log(choice);
         $(".content").hide();
 
         sendInterest(choice);
@@ -12,7 +12,8 @@ $(document).ready(function() {
 });
 
 function sendInterest(choice) {
-    $.get("/api/users", {
+    console.log(choice);
+    $.post("/api/user/find", {
         choice: choice
     }).then(data => {
         console.log(data);
