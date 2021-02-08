@@ -61,10 +61,4 @@ module.exports = function(app) {
 
     });
 
-    app.post("/api/user/:id", function(req, res) {
-
-        // Update user bio, interests, picture
-        // Updates the matches model
-
-    });
 }
