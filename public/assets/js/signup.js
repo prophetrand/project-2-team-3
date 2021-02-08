@@ -15,9 +15,26 @@ $(document).ready(function() {
         return;
     }
 
+    signUpNow(userObject.username, userObject.password);
+    userInput.val("");
+    passInput.val("");
     // client-side console.logs for testing
     console.log("Successful entry!");
     console.log("Name: " + userObject.username + ", Pass: " + userObject.password);
   });
+
+  function signUpNow(name, pass) {
+    $.post("/api/signup", {
+      username: name,
+      password: pass
+    })
+      .then(function(data){
+        // window.location.replace("/profile");
+      })
+      .catch(function(err) {
+        console.log("ERROR! ERROR!");
+        throw err;
+      });
+  }
 });
 
