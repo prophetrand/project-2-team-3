@@ -13,7 +13,7 @@ passport.use(new LocalStrategy(
     // When a user tries to sign in this code runs
     db.User.findOne({
       where: {
-        uesrname: username
+        username: username
       }
     }).then(function(dbUser) {
       // If there's no user with the given username

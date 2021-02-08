@@ -3,7 +3,6 @@ $(document).ready(function() {
   var userInput = $("input#user-input");
   var passInput = $("input#pass-input");
 
-
   signMeUp.on("submit", function(event) {
     event.preventDefault();
     var userObject = {
@@ -15,7 +14,7 @@ $(document).ready(function() {
         return;
     }
 
-    signUpNow(userObject.username, userObject.password);
+    signupNow(userObject.username, userObject.password);
     userInput.val("");
     passInput.val("");
     // client-side console.logs for testing
@@ -23,12 +22,14 @@ $(document).ready(function() {
     console.log("Name: " + userObject.username + ", Pass: " + userObject.password);
   });
 
-  function signUpNow(name, pass) {
+  function signupNow(name, pass) {
     $.post("/api/signup", {
       username: name,
       password: pass
     })
       .then(function(data){
+        console.log("Next step in promise...");
+        console.log("Checking data from promise", data);
         // window.location.replace("/profile");
       })
       .catch(function(err) {

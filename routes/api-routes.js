@@ -8,10 +8,11 @@ module.exports = function(app) {
           username: req.body.username,
           password: req.body.password
         })
-          .then(function(err) {
-            if (err) throw err;
+          .then(function(data) {
+            res.send(data);
           })
           .catch(function(err) {
+            console.log(err);
             res.status(401).json(err);
           });
     });
