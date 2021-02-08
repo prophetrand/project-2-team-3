@@ -9,7 +9,7 @@ module.exports = function(app) {
     })
 
     app.get("/profile/user/:id", isAuthenticated, function(req, res) {
-
+        res.render("profile");
     });
 
     app.get("/signup", function(req, res) {
