@@ -25,7 +25,7 @@ module.exports = function(app) {
     });
 
     app.get("/api/user", function(req, res) {
-
+      res.json(req.username);
     });
 
     app.get("/api/user/:id", function(req, res) {
