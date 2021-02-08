@@ -53,6 +53,20 @@ module.exports = function(app) {
       });
     });
 
+    // Put route for updating users
+    app.put("/api/user", function(req, res) {
+      db.User.update(
+        req.body, 
+        {
+          where: {
+          id: req.body.id
+        }
+      })
+      .then(function(dbUser) {
+        res.json(dbUser);
+      });
+    });
+
     app.get("/api/connect", function(req, res) {
 
     });
@@ -61,4 +75,4 @@ module.exports = function(app) {
 
     });
 
-}
+};

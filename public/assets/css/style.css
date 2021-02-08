@@ -24,3 +24,19 @@ a {
 .silver {
   color: dimgray;
 }
+
+.cardProfile {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 100px;
+  margin-top: 20px;
+}
+
+#editBtn {
+  width: 25px;
+  height: 25px;
+  float: right;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  
+}
