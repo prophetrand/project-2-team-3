@@ -12,10 +12,9 @@ $(document).ready(function() {
 });
 
 function sendInterest(choice) {
-    console.log(choice);
     $.post("/api/user/find", {
         choice: choice
     }).then(data => {
-        console.log(data);
+        window.location.href = "/api/connect/results";
     });
 }

@@ -37,8 +37,13 @@ module.exports = function(app) {
           interests: req.body.choice
         }
       }).then(function(users) {
-        console.log(users);
         res.json(users);
+      });
+    });
+
+    app.get("/api/connect/results", function(req, res) {
+      db.User.findAll({}).then(data => {
+        res.render("connections", data);
       });
     });
 
