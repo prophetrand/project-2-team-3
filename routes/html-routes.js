@@ -1,8 +1,9 @@
 var path = require("path");
-var User = require("../models/user")
+var models = require("../models");
+var User = models.User;
 
 var isAuthenticated = require("../config/middleware/isAuthenticated");
-
+var usersObj = [];
 module.exports = function(app) {
 
     app.get("/", function(req, res) {
@@ -21,13 +22,30 @@ module.exports = function(app) {
 
     });
 
-    app.get("/connect", function(req, res) {
-        User.all(function(data){
-            var userObj = {
-                user: data
-            };
-            console.log("HERE");
-            res.render("connect", userObj);
+    app.get("/connect", function (req, res) {
+        User.findAll({
+            attributes: ['username', 'profPic', 'interests', 'bio']
+        }).then(data => {
+            // For loop will push all current users onto an array
+            for (var i=0; i < data.length; i++){
+                usersObj.push(data[i].dataValues);
+            }
+
+            // Pass the array to res.render
+            res.render("connect", usersObj);
         });
     });
 }
+
+// User.prototype.all = function() {
+//     User.findAll({
+//         attributes: ['username', 'profPic', 'interests', 'bio']
+//     }).then(res => {
+//         var userObj = {
+//             user: res
+//         };
+        
+//         return userObj;
+//     })
+    
+// };

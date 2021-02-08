@@ -42,20 +42,5 @@ module.exports = function(sequelize, DataTypes) {
     user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
     });
 
-    User.prototype.all = function() {
-        User.findAll({
-            attributes: ['username', 'profPic', 'interests', 'bio']
-        }).then(res => {
-            var userObj = {
-                user: res
-            };
-            
-            return userObj;
-        })
-        
-    };
-
-
-
     return User;
 }
