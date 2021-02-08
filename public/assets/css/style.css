@@ -38,5 +38,9 @@ a {
   float: right;
   margin-top: 10px;
   margin-bottom: 10px;
-  
+
+}
+
+.form-check {
+  margin-left: 20px;
 }
