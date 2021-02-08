@@ -16,12 +16,12 @@ module.exports = function(app) {
           });
     });
 
-    app.get("/api/login", passport.authenticate("local"), function(req, res) {
+    app.post("/api/login", passport.authenticate("local"), function(req, res) {
         res.json(req.user);
     });
 
-    app.get("/api/signup", passport.authenticate("local"), function(req, res) {
-        
+    app.post("/api/signup", passport.authenticate("local"), function(req, res) {
+    
     });
 
     app.get("/api/user", function(req, res) {
