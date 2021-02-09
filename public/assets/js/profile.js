@@ -4,7 +4,7 @@ var loadFile = function (event) {
     $.update('/api/user', image.src);
 };
 
-$(document).ready(function () {
+// $(document).ready(function () {
 //     $(document).on("click", "#editBtn", editProfile);
 
 //     function editProfile() {
@@ -19,20 +19,20 @@ $(document).ready(function () {
 //     }
 
 // loginUser does a post to our "api/login" route and if successful, redirects us the the members page
-function loginUser(username) {
-    $.post("api/username", {
-        username: username
-    })
-        .then(function () {
-            window.location.replace("/profile");
-            // If there's an error, log the error
-        })
-        .catch(function (err) {
-            console.log(err);
-        });
-}
-});
-
+// function loginUser(username) {
+//     $.post("api/username", {
+//         username: username
+//     })
+//         .then(function () {
+//             window.location.replace("/profile");
+//             // If there's an error, log the error
+//         })
+//         .catch(function (err) {
+//             console.log(err);
+//         });
+// }
+// });
+// loginUser();
 
 
 
