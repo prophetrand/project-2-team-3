@@ -12,12 +12,5 @@ $(document).ready(function() {
 });
 
 function sendInterest(choice) {
-    $.post("/api/user/find", {
-        choice: choice
-    }).then(data => {
-        // window.location.href = "/api/connect/results";
-        $.post("/api/user/find/results", {
-            data: data
-        });
-    });
+    window.location.replace("/api/user/find/" + choice);
 }
