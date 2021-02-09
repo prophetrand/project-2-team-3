@@ -6,7 +6,7 @@ const matches = require("../models/matches");
 module.exports = function(app) {
 
     app.get("/", function(req, res) {
-        // res.render("matches");
+      
         // Welcome page and login function.
         res.render("login");
     });
