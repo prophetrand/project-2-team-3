@@ -42,6 +42,16 @@ module.exports = function(app) {
       });
     });
 
+    app.get("api/username", function(req,res) {
+      // var data = {
+      //   username: req.user.username
+      // }
+      // res.render("profile", data)
+      res.json({
+        username: req.user.username
+      });
+    });
+
     app.post("/api/user", function(req, res) {
       db.User.create({
         profPic: req.body.profPic,
@@ -57,7 +67,7 @@ module.exports = function(app) {
     app.put("/api/user", function(req, res) {
       db.User.update({
         profPic: req.body.profPic,
-        interests: req.body.interests,
+        // interests: req.body.interests,
         bio: req.body.bio 
       }, {
           where: {
