@@ -24,16 +24,16 @@ module.exports = function(app) {
     });
 
     app.get("/connect", function (req, res) {
-        User.findAll({
-            attributes: ['username', 'profPic', 'interests', 'bio']
-        }).then(data => {
-            // For loop will push all current users onto an array
-            for (var i=0; i < data.length; i++){
-                usersObj.push(data[i].dataValues);
-            }
+        // User.findAll({
+        //     attributes: ['username', 'profPic', 'interests', 'bio']
+        // }).then(data => {
+        //     // For loop will push all current users onto an array
+        //     for (var i=0; i < data.length; i++){
+        //         usersObj.push(data[i].dataValues);
+        //     }
 
-            // Pass the array to res.render
+        //     // Pass the array to res.render
             res.render("connect", usersObj);
-        });
+        // });
     });
 }

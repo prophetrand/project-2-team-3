@@ -36,8 +36,8 @@ module.exports = function(app) {
         where: {
           interests: req.body.choice
         }
-      }).then(function(users) {
-        res.json(users);
+      }).then(users => {
+        res.render("connections", users);
       });
     });
 
@@ -46,7 +46,7 @@ module.exports = function(app) {
         res.render("connections", data);
       });
     });
-
+    
     app.get("/api/user/:id", function(req, res) {
 
     });
