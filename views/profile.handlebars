@@ -23,23 +23,24 @@
     </div>
 </nav>
 {{!-- Header Image --}}
-<div class="container">
-    <img src="/assets/images/love-banner.png" class="img-fluid" alt="...">
-</div>
 
+<img src="/assets/images/love-banner.png" class="img-fluid header-img" alt="...">
+
+{{!-- 
 <div class="container">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <h2>Insert Username Here <span class="member-name"></span></h2>
         </div>
     </div>
-</div>
+</div> --}}
 <div class="container">
-    <div class="card text-center">
+    <div class="card text-center cardProfile">
         <div class="card-header"></div>
         <div class="card-body"></div>
         <div class="row">
-            <div class="col-10">
+            <div class="col-12">
+                <h2 id="member-name">Insert Username Here <span class="member-name"></span></h2>
                 {{!-- Upload Image --}}
                 {{!-- <p><input type="file" accept="image/*" name="image" id="file" onchange="loadFile(event)"
                         style="display: none;"></p>
@@ -122,25 +123,21 @@
                         </div>
                     </div>
                 </div>
-
-                {{!-- Bio --}}
-                <div class="card">
-                    <div class="card-header">Bio</div>
-                    <div class="card-body">
-                        <blockquote class="blockquote mb-0">
-                            <p>Lorem ipsum</p>
-                        </blockquote>
+            </div>
+            {{!-- Bio --}}
+            <div class="row bio-block">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">Bio</div>
+                        <div class="card-body">
+                            <blockquote class="blockquote mb-0">
+                                <p>Lorem ipsum</p>
+                            </blockquote>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
 
-
-
-
-
-
-
-        <div class="card-footer text-muted"></div>
     </div>

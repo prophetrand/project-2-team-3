@@ -29,21 +29,24 @@ a {
   padding-left: 100x;
   padding-right: 0px;
   padding-bottom: 100px;
-  margin-top: 20px;
+  margin-top: 50px;
 }
 
 #editBtn {
   width: 25px;
   height: 25px;
   float: right;
-  margin-top: 10px;
+  margin-top: 0px;
   margin-bottom: 10px;
+  margin-right: 10px;
 
 
 }
 
 .form-check {
   margin-left: 20px;
+  text-align: left;
+  margin-bottom: 5px;
 }
 
 #modalUpload {
@@ -54,13 +57,27 @@ a {
   width:200px;
   height: 200px;
   border: 3px solid black;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  
+  position: relative;
+  top: 40%;
+  left: 20%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
 }
 
 .header-img {
-  width:100px;
+  width: 100% !important;
   height: 250px;
+  display: block;
+}
+
+.bio-block {
+  margin-top: 30px;
+  display: block;
+  margin-left: 1px;
+  margin-right: 5px;
+
+}
+
+#member-name {
+  text-align: center;
 }
