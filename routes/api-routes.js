@@ -17,12 +17,12 @@ module.exports = function(app) {
           });
     });
 
-    app.get("/api/login", passport.authenticate("local"), function(req, res) {
+    app.post("/api/login", passport.authenticate("local"), function(req, res) {
         res.json(req.user);
     });
 
-    app.get("/api/signup", passport.authenticate("local"), function(req, res) {
-        
+    app.post("/api/signup", passport.authenticate("local"), function(req, res) {
+    
     });
 
     app.get("/api/user", function(req, res) {
@@ -44,7 +44,7 @@ module.exports = function(app) {
     app.get("/api/matches/:id", function(req, res) {
          db.Matches.findAll({
            where: {
-              user_id: req.body.user_id
+              user_id: req.user_id
            },
                       
          }).then(function(dbMatches){

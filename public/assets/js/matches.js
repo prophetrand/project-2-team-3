@@ -4,12 +4,6 @@ $(document).ready(function() {
      
     });
  
-
-
-
-//       <script>
-//     <script src="example.js" defer></script>
-// </script>
     
   });
 
