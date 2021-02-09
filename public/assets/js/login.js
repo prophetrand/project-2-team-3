@@ -30,11 +30,10 @@ $(document).ready(function() {
       .then(function(data){
         console.log("Next step in promise...");
         console.log("Checking data from promise", data);
-        // window.location.replace("/profile");
+        window.location.replace("/profile");
       })
       .catch(function(err) {
-        console.log("ERROR! ERROR!");
-        throw err;
+        console.log(err);
       });
   }
 });

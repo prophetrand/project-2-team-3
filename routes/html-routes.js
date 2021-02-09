@@ -6,6 +6,9 @@ module.exports = function(app) {
 
     app.get("/", function(req, res) {
         // Welcome page and login function.
+        if (req.user) {
+            res.redirect("/profile");
+        }
         res.render("login");
     });
 
