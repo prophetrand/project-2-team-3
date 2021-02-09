@@ -3,6 +3,13 @@ $(document).ready(function() {
   var userInput = $("input#user-input");
   var passInput = $("input#pass-input");
   var bioInput = $("input#bio-input");
+  var arts = $("#arts1").is(":checked");
+  var food = $("#food2").is(":checked");
+  var nature = $("#nature3").is(":checked");
+  var sports = $("#sports4").is(":checked");
+  var tech = $("#tech5").is(":checked");
+  var travel = $("#travel6").is(":checked");
+
 
   signMeUp.on("submit", function(event) {
     event.preventDefault();
@@ -22,7 +29,9 @@ $(document).ready(function() {
     bioInput.val("");
     // client-side console.logs for testing
     console.log("Successful entry!");
-    console.log("Name: " + userObject.username + ", Pass: " + userObject.password + ", Bio: " + userObject.bio);
+    console.log("Name: " + userObject.username + ", Bio: " + userObject.bio);
+
+    // newInterests();
   });
 
   function signupNow(name, pass, bio) {
@@ -30,7 +39,6 @@ $(document).ready(function() {
       username: name,
       password: pass,
       bio: bio
-      // interests: ints
     })
       .then(function(data){
         console.log("Next step in promise...");
@@ -41,6 +49,32 @@ $(document).ready(function() {
         console.log("ERROR! ERROR!");
         throw err;
       });
+  }
+
+  function newInterests() {
+    if (arts) {
+      
+    }
+
+    if (food) {
+      
+    }
+
+    if (nature) {
+
+    }
+
+    if (sports) {
+
+    }
+
+    if (tech) {
+
+    }
+
+    if (travel) {
+
+    }
   }
 });
 

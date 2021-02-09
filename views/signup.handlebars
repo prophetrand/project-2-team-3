@@ -27,6 +27,7 @@
     <div class="col-md-6" id="formBox">
       <h2 class="silver mt-2">Signup</h2>
       
+      {{!-- Text input fields of User, Pass, Bio --}}
       <form class="signup mb-3">
         <div class="form-group">
           <label for="userInput">Username</label>
@@ -41,11 +42,31 @@
           <input type="text" class="form-control" id="bio-input" placeholder="I'm an aspiring web developer who goes outside sometimes.">
         </div><br />
 
-        {{!-- form-group below should be checkboxes, look into Bootstrap docs (sent in Slack by Jessny) for how to include them in the form. Might be helpful to check out Jessny's branch too. --}}
-        {{!-- <div class="form-group">
-          <label for="passInput">Password</label>
-          <input type="password" class="form-control" id="pass-input" placeholder="Password">
-        </div><br /> --}}
+        {{!-- Interests checkboxes --}}
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="arts1" value="1">
+          <label class="form-check-label" for="inlineCheckbox1">Arts</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="food2" value="2">
+          <label class="form-check-label" for="inlineCheckbox2">Food</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="nature3" value="3">
+          <label class="form-check-label" for="inlineCheckbox3">Nature</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="sports4" value="4">
+          <label class="form-check-label" for="inlineCheckbox3">Sports</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="tech5" value="5">
+          <label class="form-check-label" for="inlineCheckbox3">Tech</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="travel6" value="6">
+          <label class="form-check-label" for="inlineCheckbox3">Travel</label>
+        </div>
 
         <button type="submit" class="btn btn-outline-success">Register</button>
         <span class="fst-italic text-muted">Already have an account? Log in <a href="/">here</a></span>

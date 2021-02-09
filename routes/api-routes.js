@@ -8,15 +8,28 @@ module.exports = function(app) {
           username: req.body.username,
           password: req.body.password,
           bio: req.body.bio
-          // interests: req.body.ints
         })
           .then(function(data) {
-            res.send(data);
+            res.redirect(307, "/api/login");
           })
           .catch(function(err) {
             console.log(err);
             res.status(401).json(err);
           });
+    });
+
+    app.post("/api/interests", function(req, res) {
+      db.User_interests.create({
+        user_id: req.user.id,
+        interest_id: req.body.interest_id
+      })
+        .then(function(data) {
+          res.send(data);
+        })
+        .catch(function(err) {
+          console.log(err);
+          res.status(401).json(err);
+        });
     });
 
     app.post("/api/login", passport.authenticate("local"), function(req, res) {

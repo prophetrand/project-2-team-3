@@ -10,7 +10,7 @@ module.exports = function(app) {
     });
 
     app.get("/profile", function(req, res) {
-
+        
     });
 
     app.get("/signup", function(req, res) {
