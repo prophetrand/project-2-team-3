@@ -33,13 +33,13 @@
                         <h5 class="card-title">Name</h5>
                         <p class="card-text text-center">Interests </p>
 
-                        <ul class="Interests_list">
-                            {{#each Interests}}
-                            <li>
-                           {{this}}
-                            </li>
+                    <div class="container">
+                      <div class="card-deck">
+                            {{#each users}}
+                            {{>user/user-card}}
                             {{/each}}
-                        </ul>
+                      </div>
+                    </div>
 
                     </div>
                 </div>

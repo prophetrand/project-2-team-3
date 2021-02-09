@@ -26,15 +26,48 @@ module.exports = function(app) {
     });
 
     app.get("/api/user", function(req, res) {
-
+      db.User.find({})
+      .then(function(dbUser) {
+        res.json(dbUser);
+      });
     });
 
     app.get("/api/user/:id", function(req, res) {
-
+      db.User.findOne({
+        where: {
+          id: req.params.id
+        }
+      })
+      .then(function(dbUser) {
+        res.json(dbUser);
+      });
     });
 
     app.post("/api/user", function(req, res) {
+      db.User.create({
+        profPic: req.body.profPic,
+        interests: req.body.interests,
+        bio: req.body.bio
+      })
+      .then(function(dbUser) {
+        res.json(dbUser);
+      });
+    });
 
+    // Put route for updating users
+    app.put("/api/user", function(req, res) {
+      db.User.update({
+        profPic: req.body.profPic,
+        interests: req.body.interests,
+        bio: req.body.bio 
+      }, {
+          where: {
+          id: req.body.id
+        }
+      })
+      .then(function(dbUser) {
+        res.json(dbUser);
+      });
     });
 
     app.get("/api/connect", function(req, res) {
@@ -53,10 +86,4 @@ module.exports = function(app) {
 
     });
 
-    app.post("/api/user/:id", function(req, res) {
-
-        // Update user bio, interests, picture
-        // Updates the matches model
-
-    });
-}
+};

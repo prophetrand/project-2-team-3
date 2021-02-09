@@ -7,9 +7,7 @@ $(document).ready(function() {
       $(".matches-name").text(data);
     });
     
-    
-    
-    
+      
   });
 
 

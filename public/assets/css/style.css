@@ -24,3 +24,63 @@ a {
 .silver {
   color: dimgray;
 }
+<<<<<<< HEAD
+=======
+
+.cardProfile {
+  padding-left: 100x;
+  padding-right: 0px;
+  padding-bottom: 100px;
+  margin-top: 50px;
+}
+
+#editBtn {
+  width: 25px;
+  height: 25px;
+  float: right;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+
+
+}
+
+.form-check {
+  margin-left: 20px;
+  text-align: left;
+  margin-bottom: 5px;
+}
+
+#modalUpload {
+  margin-bottom: 100px;
+}
+
+#imgHolder {
+  width:200px;
+  height: 200px;
+  border: 3px solid black;
+  position: relative;
+  top: 40%;
+  left: 20%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+}
+
+.header-img {
+  width: 100% !important;
+  height: 250px;
+  display: block;
+}
+
+.bio-block {
+  margin-top: 30px;
+  display: block;
+  margin-left: 1px;
+  margin-right: 5px;
+
+}
+
+#member-name {
+  text-align: center;
+}
+>>>>>>> a0c9d3593bffe9b788cd93ea0ba603b4897fdc2e
