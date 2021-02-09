@@ -15,6 +15,9 @@ function sendInterest(choice) {
     $.post("/api/user/find", {
         choice: choice
     }).then(data => {
-        window.location.href = "/api/connect/results";
+        // window.location.href = "/api/connect/results";
+        $.post("/api/user/find/results", {
+            data: data
+        });
     });
 }

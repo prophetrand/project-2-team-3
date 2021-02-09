@@ -3,7 +3,7 @@ var models = require("../models");
 var User = models.User;
 
 var isAuthenticated = require("../config/middleware/isAuthenticated");
-var usersObj = [];
+// var usersObj = [];
 module.exports = function(app) {
 
     app.get("/", function(req, res) {
@@ -23,6 +23,10 @@ module.exports = function(app) {
 
     });
 
+    app.post("/api/user/find/results", function(req, res) {
+        res.render("connections", req.body.data);
+    });
+
     app.get("/connect", function (req, res) {
         // User.findAll({
         //     attributes: ['username', 'profPic', 'interests', 'bio']
@@ -33,7 +37,7 @@ module.exports = function(app) {
         //     }
 
         //     // Pass the array to res.render
-            res.render("connect", usersObj);
+            res.render("connect");
         // });
     });
 }

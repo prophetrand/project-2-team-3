@@ -31,22 +31,22 @@ module.exports = function(app) {
       });
     });
 
-    app.post("/api/user/find", function(req, res) {
-      db.User.findAll({
-        where: {
-          interests: req.body.choice
-        }
-      }).then(users => {
-        res.render("connections", users);
-      });
-    });
+    // app.post("/api/user/find", function(req, res) {
+    //   db.User.findAll({
+    //     where: {
+    //       interests: req.body.choice
+    //     }
+    //   }).then(users => {
+    //     res.render("connections", users);
+    //   });
+    // });
 
     app.get("/api/connect/results", function(req, res) {
       db.User.findAll({}).then(data => {
-        res.render("connections", data);
+        res.redirect("connections", data);
       });
     });
-    
+
     app.get("/api/user/:id", function(req, res) {
 
     });
