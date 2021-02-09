@@ -4,6 +4,20 @@ var loadFile = function (event) {
     $.update('/api/user', image.src);
 };
 
+$(document).ready(function () {
+    $(document).on("click", "#editBtn", editProfile);
+
+    function editProfile() {
+        var currentProfile = $(this).data()
+    }
+    function updateProfile() {
+        $.ajax({
+            method: "PUT",
+            url: "/api/user",
+            data: 
+        }).then(getTodos);
+    }
+});
 
 
 
@@ -12,10 +26,6 @@ var loadFile = function (event) {
 // var uploadImage = $("#profilePic");
 // image.src = URL.createObjectURL(event.target.files[0]);
 // });
-
-
-
-
 
 // Edit Button
 // $("#editBtn").on("click", function (event) {
