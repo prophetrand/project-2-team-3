@@ -1,5 +1,6 @@
 var db = require("../models");
 var passport = require("../config/passport");
+const matches = require("../models/matches");
 
 module.exports = function(app) {
 
@@ -41,6 +42,14 @@ module.exports = function(app) {
     });
 
     app.get("/api/matches/:id", function(req, res) {
+         db.Matches.findAll({
+           where: {
+              user_id: req.body.user_id
+           },
+                      
+         }).then(function(dbMatches){
+           res.json(dbMatches);
+         });
 
     });
 
