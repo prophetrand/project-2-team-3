@@ -42,17 +42,12 @@ module.exports = function (app) {
       });
   });
 
-  // app.get("api/username", function(req,res) {
-  //   console.log("GET USERNAME:", req.body)
-  //   res.render("/profile", {
-  //     username: req.user.username
-  //   })
-  // });
   app.get("/api/username", function(req,res) {
     console.log("GET USERNAME:", req.body)
     var data = {
       // username: req.user.username
-      username: "usertest1"
+      username: "usertest1",
+      bio: "it works woohoo"
     }
     res.render("profile", data)
 
