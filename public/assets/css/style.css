@@ -26,8 +26,8 @@ a {
 }
 
 .cardProfile {
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 100x;
+  padding-right: 0px;
   padding-bottom: 100px;
   margin-top: 20px;
 }
@@ -39,8 +39,28 @@ a {
   margin-top: 10px;
   margin-bottom: 10px;
 
+
 }
 
 .form-check {
   margin-left: 20px;
+}
+
+#modalUpload {
+  margin-bottom: 100px;
+}
+
+#imgHolder {
+  width:200px;
+  height: 200px;
+  border: 3px solid black;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  
+}
+
+.header-img {
+  width:100px;
+  height: 250px;
 }

@@ -1,3 +1,11 @@
+var loadFile = function (event) {
+    var image = $('#profilePic');
+    image.src = URL.createObjectURL(event.target.files[0]);
+    $.update('/api/user', image.src);
+};
+
+
+
 // $("input[type='image']").click(function() {
 //     $("input[id='profilePic']").focus().click();
 // });
