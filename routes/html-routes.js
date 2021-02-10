@@ -1,4 +1,5 @@
 var path = require("path");
+var db = require("../models");
 
 var isAuthenticated = require("../config/middleware/isAuthenticated");
 
@@ -13,14 +14,21 @@ module.exports = function (app) {
     });
 
     app.get("/profile", function (req, res) {
-        var data = {
-            username: req.user.username,
-            bio: req.user.bio,
-            profPic: req.user.profPic,
-            id: req.user.id
-        }
-    
-        // User_interests.findAll({
+        db.User.findOne({
+            where: {
+                id: req.user.id,
+            }
+        }).then(function (dbData) {
+            var hbsData = {
+                username: dbData.username,
+                bio: dbData.bio,
+                profPic: dbData.profPic,
+                id: dbData.id
+            }
+            res.render("profile", hbsData);
+        });
+
+         // User_interests.findAll({
         //     where: {
         //         user_id: req.user.id
         //     },
@@ -30,8 +38,6 @@ module.exports = function (app) {
         //         }
         //     ],
         // })
-        console.log(data);
-        res.render("profile", data);
     });
 
     app.get("/signup", function (req, res) {

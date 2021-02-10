@@ -1,7 +1,4 @@
-const user_interests = require("./user_interests");
-const User = require("./user");
-
-module.exports = function (sequelize, DataTypes) {
+module.exports = function(sequelize, DataTypes) {
     var Interests = sequelize.define("Interests", {
         name: {
             type: DataTypes.STRING,
@@ -20,6 +17,32 @@ module.exports = function (sequelize, DataTypes) {
             foreignKey: "interest_id"
         });
     }
+
+    // Interests.create({
+    //     name: "Arts"
+    // }).then(function() {
+    //     Interests.create({
+    //         name: "Food"
+    //     }).then(function() {
+    //         Interests.create({
+    //             name: "Nature"
+    //         }).then(function() {
+    //             Interests.create({
+    //                 name: "Sports"
+    //             }).then(function() {
+    //                 Interests.create({
+    //                     name: "Tech"
+    //                 }).then(function() {
+    //                     Interests.create({
+    //                         name: "Travel"
+    //                     });
+    //                 })
+    //             })
+    //         })
+    //     })
+    // }).catch(function(err) {
+    //     console.log(err);
+    // });
 
     return Interests;
 };
