@@ -11,8 +11,8 @@ module.exports = function(app) {
         res.render("login");
     });
 
-    app.get("/profile", function(req, res) {
-        res.render("profile");
+    app.get("/profile/user/:id", isAuthenticated, function(req, res) {
+
     });
 
     app.get("/signup", function(req, res) {
@@ -21,7 +21,6 @@ module.exports = function(app) {
 
     app.get("/matches", function(req, res) {
         
-
         res.render("matches")
     });
 
