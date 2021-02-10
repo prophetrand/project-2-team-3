@@ -106,12 +106,12 @@ module.exports = function (app) {
     });
   });
 
-  app.get("/api/connect", function (req, res) {
+  app.post("/api/connect", function (req, res) {
     db.Matches.create({
       user_id: req.user.id,
-      match_id: req.body.id
+      match_id: req.body.match_id
     }).then(data => {
-      res.redirect(307, "/profile");
+      res.redirect("/profile");
     });
   });
 

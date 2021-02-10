@@ -1,5 +1,6 @@
 var path = require("path");
 var db = require("../models");
+var Op = db.Sequelize.Op;
 
 var isAuthenticated = require("../config/middleware/isAuthenticated");
 const interests = require("../models/interests");
@@ -46,7 +47,30 @@ module.exports = function (app) {
     });
 
     app.get("/matches", function(req, res) {
-          res.render("matches");
+        db.Matches.findAll({
+            where: {
+                user_id: req.user.id
+            }
+        }).then(data => {
+            var arr = [];
+
+            for (var i=0; i < data.length; i++){
+                arr.push(data[i].dataValues.match_id);
+            }
+
+            db.User.findAll({
+                where: {
+                    id: {
+                        [Op.in]: arr
+                    }
+                }
+            }).then(data2 => {
+                console.log(data2);
+                res.render("matches", data2)
+            });
+
+            
+        })
     });
 
     // Route to retrieve all users with that interest
