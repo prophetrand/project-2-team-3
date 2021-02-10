@@ -17,9 +17,6 @@ $(document).ready(function() {
     loginNow(userObject.username, userObject.password);
     userInput.val("");
     passInput.val("");
-    // client-side console.logs for testing
-    console.log("Successful entry!");
-    console.log("Name: " + userObject.username + ", Pass: " + userObject.password);
   });
 
   function loginNow(user, pass) {
