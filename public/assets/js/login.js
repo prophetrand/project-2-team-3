@@ -28,8 +28,8 @@ $(document).ready(function() {
       password: pass
     })
       .then(function(data){
-        console.log("Next step in promise...");
-        console.log("Checking data from promise", data);
+        // console.log("Next step in promise...");
+        // console.log("Checking data from promise", data);
         window.location.replace("/profile");
       })
       .catch(function(err) {
