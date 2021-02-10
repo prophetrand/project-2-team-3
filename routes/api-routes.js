@@ -78,9 +78,9 @@ module.exports = function(app) {
 
     });
 
-    // GET route for logout function, will probably be useful later.
-    // app.get("/logout", function(req, res) {
-    //   req.logout();
-    //   res.redirect("/");
-    // });
+    // GET route for logout function
+    app.get("/logout", function(req, res) {
+      req.logout();
+      res.redirect("/");
+    });
 }
