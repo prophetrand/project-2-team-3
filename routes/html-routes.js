@@ -65,8 +65,14 @@ module.exports = function (app) {
                     }
                 }
             }).then(data2 => {
-                console.log(data2);
-                res.render("matches", data2)
+                var users = [];
+                for(var j = 0; j < data2.length; j++){
+                    users.push(data2[j].dataValues);
+                }
+                console.log(users);
+                var usersObj = { users: users};
+
+                res.render("matches", usersObj);
             });
 
             
@@ -97,6 +103,7 @@ module.exports = function (app) {
             var usersObj = { users: users};
 
             res.render("connections", usersObj);
+
           }).catch(function(err) {
             console.log(err);
           });
