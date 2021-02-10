@@ -25,16 +25,16 @@
 
 <br>
 
-<div class="container">
-    <div class="card-deck">
+<div class="container" style="align-items: center;">
+    <div class="card-group" style="align-items: center;">
         {{#each this}}
-        <div class="card text-center" style="min-width: 18rem; max-width: 18rem;">
+        <div class="card text-center" style="min-width: 18rem; max-width: 18rem; outline:black">
             <div class="card-header">{{username}}</div>
             <img class="card-img-top" src="{{profPic}}" alt="profile-pic">
             <hr>
             <div class="card-body">
                 <p class="card-text">{{bio}}</p>
-                <a href="#" class="btn btn-primary" style="background-color: palevioletred;">Connect</a>
+                <a href="#" class="btn btn-primary" style="background-color: palevioletred;" data-id="{{id}}">Connect</a>
             </div>
         </div>
         {{/each}}
