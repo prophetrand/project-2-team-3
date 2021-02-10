@@ -33,7 +33,13 @@ a {
   background-color: #AFC4C0;
 }
 .card-header{
-  /* background-color: silver; */
+  font-size: 20px;
+  font-family: helvetica;
+}
+
+#bioText {
+  font-size: 20px;
+  font-family: 'times new roman';
 }
 
 #editBtn {
@@ -88,10 +94,11 @@ a {
 #member-name {
   text-align: center;
   font-family: garamond;
-  font-size: 50px;
+  font-size: 55px;
   font-weight: bold;
 }
 
 .callout-danger {
   text-align: center;
 }
+
