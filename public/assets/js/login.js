@@ -17,9 +17,6 @@ $(document).ready(function() {
     loginNow(userObject.username, userObject.password);
     userInput.val("");
     passInput.val("");
-    // client-side console.logs for testing
-    console.log("Successful entry!");
-    console.log("Name: " + userObject.username + ", Pass: " + userObject.password);
   });
 
   function loginNow(user, pass) {
@@ -28,8 +25,8 @@ $(document).ready(function() {
       password: pass
     })
       .then(function(data){
-        console.log("Next step in promise...");
-        console.log("Checking data from promise", data);
+        // console.log("Next step in promise...");
+        // console.log("Checking data from promise", data);
         window.location.replace("/profile");
       })
       .catch(function(err) {
