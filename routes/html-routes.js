@@ -8,18 +8,21 @@ module.exports = function(app) {
 
     app.get("/", function(req, res) {
         // Welcome page and login function.
+        if (req.user) {
+            res.redirect("/profile");
+        }
         res.render("login");
     });
 
-    app.get("/profile/user/:id", isAuthenticated, function(req, res) {
-
+    app.get("/profile", function(req, res) {
+        res.render("profile");
     });
 
     app.get("/signup", function(req, res) {
         res.render("signup");
     });
 
-    app.get("/matches", isAuthenticated, function(req, res) {
+    app.get("/matches", function(req, res) {
 
     });
 
@@ -28,16 +31,7 @@ module.exports = function(app) {
     });
 
     app.get("/connect", function (req, res) {
-        // User.findAll({
-        //     attributes: ['username', 'profPic', 'interests', 'bio']
-        // }).then(data => {
-        //     // For loop will push all current users onto an array
-        //     for (var i=0; i < data.length; i++){
-        //         usersObj.push(data[i].dataValues);
-        //     }
-
-        //     // Pass the array to res.render
             res.render("connect");
-        // });
     });
 }
+// be sure to add back in "isAunthenticated" to routes that we want restricted.
