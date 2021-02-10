@@ -1,5 +1,6 @@
 var db = require("../models");
 var passport = require("../config/passport");
+const matches = require("../models/matches");
 
 module.exports = function (app) {
 
@@ -93,8 +94,15 @@ module.exports = function (app) {
       });
   });
 
-
   app.get("/api/matches/:id", function (req, res) {
+    db.Matches.findAll({
+      where: {
+        match_id: req.user_id
+      },
+
+    }).then(function (dbMatches) {
+      res.render("matches", dbMatches);
+    });
 
   });
 
@@ -118,9 +126,10 @@ module.exports = function (app) {
   // });
 
 
-    // GET route for logout function
-    app.get("/logout", function(req, res) {
-      req.logout();
-      res.redirect("/");
-    });
+  // GET route for logout function
+  app.get("/logout", function (req, res) {
+    req.logout();
+    res.redirect("/");
+  });
 }
+
