@@ -13,15 +13,25 @@ module.exports = function (app) {
     });
 
     app.get("/profile", function (req, res) {
-        console.log(req.user.username);
         var data = {
             username: req.user.username,
             bio: req.user.bio,
-            profPic: req.user.profPic
-            // username: "usertest1",
-            // bio: "it works woohoo"
+            profPic: req.user.profPic,
+            id: req.user.id
         }
-        res.render("profile", data)
+    
+        // User_interests.findAll({
+        //     where: {
+        //         user_id: req.user_interests.user_id
+        //     },
+        //     include: [
+        //         {
+        //             model: Interests
+        //         }
+        //     ],
+        // })
+        console.log(data);
+        res.render("profile", data);
     });
 
     app.get("/signup", function (req, res) {
