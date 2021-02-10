@@ -3,13 +3,6 @@ $(document).ready(function() {
   var userInput = $("input#user-input");
   var passInput = $("input#pass-input");
   var bioInput = $("input#bio-input");
-  var arts = $("#arts1").is(":checked");
-  var food = $("#food2").is(":checked");
-  var nature = $("#nature3").is(":checked");
-  var sports = $("#sports4").is(":checked");
-  var tech = $("#tech5").is(":checked");
-  var travel = $("#travel6").is(":checked");
-
 
   signMeUp.on("submit", function(event) {
     event.preventDefault();
@@ -27,11 +20,6 @@ $(document).ready(function() {
     userInput.val("");
     passInput.val("");
     bioInput.val("");
-    // client-side console.logs for testing
-    console.log("Successful entry!");
-    console.log("Name: " + userObject.username + ", Bio: " + userObject.bio);
-
-    // newInterests();
   });
 
   function signupNow(name, pass, bio) {
@@ -40,41 +28,48 @@ $(document).ready(function() {
       password: pass,
       bio: bio
     })
-      .then(function(data){
-        console.log("Next step in promise...");
-        console.log("Checking data from promise", data);
-        // window.location.replace("/profile");
+      .then(function(){
+        var arts = $("#arts1").is(":checked");
+        var food = $("#food2").is(":checked");
+        var nature = $("#nature3").is(":checked");
+        var sports = $("#sports4").is(":checked");
+        var tech = $("#tech5").is(":checked");
+        var travel = $("#travel6").is(":checked");
+        if (arts) {
+          newInterest(1);
+        }
+        if (food) {
+          newInterest(2);
+        }
+        if (nature) {
+          newInterest(3);
+        }
+        if (sports) {
+          newInterest(4);
+        }
+        if (tech) {
+          newInterest(5);
+        }
+        if (travel) {
+          newInterest(6);
+        }
+      })
+      .then(function() {
+        setTimeout(() => {
+          window.location.replace("/profile");
+        }, 1000);
       })
       .catch(function(err) {
-        console.log("ERROR! ERROR!");
-        throw err;
+        console.log(err);
       });
   }
 
-  function newInterests() {
-    if (arts) {
-      
-    }
-
-    if (food) {
-      
-    }
-
-    if (nature) {
-
-    }
-
-    if (sports) {
-
-    }
-
-    if (tech) {
-
-    }
-
-    if (travel) {
-
-    }
+  function newInterest(num) {
+    $.post("/api/interests", {
+      interest_id: num
+    }).catch(function(err){
+      console.log(err);
+    });
   }
 });
 
