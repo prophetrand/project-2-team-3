@@ -14,6 +14,7 @@ module.exports = function (app) {
         res.render("login");
     });
 
+    // Gets profile page with their bio, profile pic, username, and interests
     app.get("/profile", function (req, res) {
         db.User.findOne({
             where: {
@@ -26,19 +27,31 @@ module.exports = function (app) {
                 profPic: dbData.profPic,
                 id: dbData.id
             }
-            res.render("profile", hbsData);
+            db.Interests.findAll({
+                include: {
+                    model: db.User,
+                    through: {
+                        where: {
+                            user_id: req.user.id
+                        }
+                    },
+                    as: "User"
+                }
+            }).then(data => {
+                console.log(data);
+                var interests = [];
+                for (var i = 0; i < data.length; i++) {
+                    if (data[i].dataValues.User.length !== 0) {
+                        interests.push(data[i].dataValues);
+                    }
+                }
+                hbsData.interests = interests;
+                console.log(hbsData);
+                res.render("profile", hbsData);
+            }).catch(function (err) {
+                console.log(err);
+            });
         });
-
-        // User_interests.findAll({
-        //     where: {
-        //         user_id: req.user.id
-        //     },
-        //     include: [
-        //         {
-        //             model: Interests
-        //         }
-        //     ],
-        // })
     });
 
     app.get("/signup", function (req, res) {

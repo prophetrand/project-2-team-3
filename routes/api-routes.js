@@ -78,7 +78,6 @@ module.exports = function (app) {
   // Put route for updating users
   app.put("/api/user/:id", function (req, res) {
     db.User.update({
-      // profPic: req.body.profPic,
       // interests: req.body.interests,
       bio: req.body.bio,
     }, {
@@ -113,42 +112,6 @@ module.exports = function (app) {
     }).then(data => {
       res.redirect(307, "/profile");
     });
-  });
-
-  app.get("/api/matches/:id", function (req, res) {
-
-  });
-
-  // GET route for logout function, will probably be useful later.
-  // app.get("/logout", function(req, res) {
-  //   req.logout();
-  //   res.redirect("/");
-  // });
-
-  app.get("/api/interests/:id", function (req, res) {
-    db.User.findAll({
-      include: {
-        model: db.User,
-        // where: {
-        //   id: req.params.id
-        // },
-        through: {
-          where: {
-            user_id: req.params.id
-          }
-        },
-        as: "Interests"
-      }
-    }).then(data => {
-      console.log(data[0].dataValues.Interests);
-      var users = [];
-      for (var i = 0; i < data.length; i++) {
-        users.push(data[i].dataValues)
-      }
-      res.render("profile");
-    }).catch(function(err) {
-      console.log(err);
-    })
   });
 
 
