@@ -2,6 +2,7 @@ var path = require("path");
 var db = require("../models");
 
 var isAuthenticated = require("../config/middleware/isAuthenticated");
+const interests = require("../models/interests");
 
 module.exports = function (app) {
 
@@ -50,20 +51,31 @@ module.exports = function (app) {
 
     // Route to retrieve all users with that interest
     app.get("/connect/:choice", function (req, res) {
-        db.User
-            .findAll({
-                where: {
-                    interests: req.params.choice
-                }
-            })
-            .then(data => {
-                var users = [];
-                for (var i = 0; i < data.length; i++) {
+        db.User.findAll({
+            include: {
+                model: db.Interests,
+                through: {
+                    where: {
+                        interest_id: req.params.choice,
+                    }
+                },
+                as: "Interests"
+            }
+        }).then(data => {
+            console.log(data[0].dataValues.Interests);
+            var users = [];
+            for (var i = 0; i < data.length; i++) {
+                if (data[i].dataValues.Interests.length !== 0) {
                     users.push(data[i].dataValues);
                 }
-                console.log(users);
-                res.render("connections", users);
-            });
+            }
+            console.log(users);
+            var usersObj = { users: users };
+
+            res.render("connections", usersObj);
+        }).catch(function (err) {
+            console.log(err);
+        });
     });
 
     app.get("/connect", function (req, res) {
