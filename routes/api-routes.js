@@ -112,6 +112,10 @@ module.exports = function (app) {
   //     });
   // });
 
+
+    // GET route for logout function
+    app.get("/logout", function(req, res) {
+      req.logout();
+      res.redirect("/");
+    });
 }
-
-
