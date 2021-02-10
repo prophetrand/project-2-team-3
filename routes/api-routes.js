@@ -1,5 +1,6 @@
 var db = require("../models");
 var passport = require("../config/passport");
+const matches = require("../models/matches");
 
 module.exports = function (app) {
 
@@ -65,6 +66,7 @@ module.exports = function (app) {
       });
   });
 
+<<<<<<< HEAD
     app.get("/api/connect", function(req, res) {
       db.Matches.create({
         user_id: req.user.id,
@@ -73,6 +75,18 @@ module.exports = function (app) {
         res.redirect(307, "/profile");
       });
     });
+=======
+
+  app.get("/api/connect", function (req, res) {
+    db.Matches.create({
+      user_id: req.user.id,
+      match_id: req.body.id
+    }).then(data => {
+      res.redirect(307, "/profile");
+    });
+  });
+
+>>>>>>> 86c5cc7064c5e0a79e3c801d52ee88211450d67e
   // Put route for updating users
   app.put("/api/user/:id", function (req, res) {
     db.User.update({
@@ -94,6 +108,17 @@ module.exports = function (app) {
   });
 
   app.get("/api/matches/:id", function (req, res) {
+<<<<<<< HEAD
+=======
+    db.Matches.findAll({
+      where: {
+        match_id: req.user_id
+      },
+
+    }).then(function (dbMatches) {
+      res.render("matches", dbMatches);
+    });
+>>>>>>> 86c5cc7064c5e0a79e3c801d52ee88211450d67e
 
   });
 
@@ -117,9 +142,10 @@ module.exports = function (app) {
   // });
 
 
-    // GET route for logout function
-    app.get("/logout", function(req, res) {
-      req.logout();
-      res.redirect("/");
-    });
+  // GET route for logout function
+  app.get("/logout", function (req, res) {
+    req.logout();
+    res.redirect("/");
+  });
 }
+
