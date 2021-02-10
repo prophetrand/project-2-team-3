@@ -45,8 +45,8 @@ module.exports = function (app) {
         res.render("signup");
     });
 
-    app.get("/matches", function(req, res) {
-          res.render("matches");
+    app.get("/matches", function (req, res) {
+
     });
 
     // Route to retrieve all users with that interest
