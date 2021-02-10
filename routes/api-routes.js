@@ -86,11 +86,7 @@ module.exports = function(app) {
           res.render("connections", users);
         });
     });
-
-    app.get("/api/connect", function(req, res) {
-
-    });
-
+    
     app.get("/api/matches/:id", function(req, res) {
 
     });
