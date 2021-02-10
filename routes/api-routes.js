@@ -50,7 +50,6 @@ module.exports = function (app) {
       })
       .then(data => {
         var users = [];
-        // console.log(data[1].dataValues);
         for(var i = 0; i < data.length; i++){
           users.push(data[i].dataValues);
         }
