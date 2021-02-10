@@ -12,5 +12,5 @@ $(document).ready(function() {
 });
 
 function sendInterest(choice) {
-    window.location.replace("/api/user/find/" + choice);
+    window.location.replace("/connect/" + choice);
 }

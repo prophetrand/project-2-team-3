@@ -1,6 +1,5 @@
 var path = require("path");
-var models = require("../models");
-var User = models.User;
+var db = require("../models");
 
 var isAuthenticated = require("../config/middleware/isAuthenticated");
 // var usersObj = [];
@@ -26,9 +25,23 @@ module.exports = function(app) {
 
     });
 
-    app.post("/api/user/find/results", function(req, res) {
-        res.render("connections", req.body.data);
-    });
+    // Route to retrieve all users with that interest
+    app.get("/connect/:choice", function (req, res) {
+        db.User
+          .findAll({
+            where: {
+              interests: req.params.choice
+            }
+          })
+          .then(data => {
+            var users = [];
+            for(var i = 0; i < data.length; i++){
+              users.push(data[i].dataValues);
+            }
+            console.log(users);
+            res.render("connections", users);
+          });
+      });
 
     app.get("/connect", function (req, res) {
         res.render("connect");

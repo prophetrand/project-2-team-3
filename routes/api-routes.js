@@ -70,25 +70,13 @@ module.exports = function(app) {
       });
     });
 
-    app.get("/api/user/find/:choice", function (req, res) {
-      db.User
-        .findAll({
-          where: {
-            interests: req.params.choice
-          }
-        })
-        .then(data => {
-          var users = [];
-          for(var i = 0; i < data.length; i++){
-            users.push(data[i].dataValues);
-          }
-          console.log(users);
-          res.render("connections", users);
-        });
-    });
-    
-    app.get("/api/matches/:id", function(req, res) {
-
+    app.get("/api/connect", function(req, res) {
+      db.Matches.create({
+        user_id: req.user.id,
+        match_id: req.body.id
+      }).then(data => {
+        res.redirect(307, "/profile");
+      });
     });
 
     // GET route for logout function, will probably be useful later.
