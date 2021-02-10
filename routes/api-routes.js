@@ -1,32 +1,44 @@
 var db = require("../models");
 var passport = require("../config/passport");
 
-module.exports = function (app) {
+module.exports = function(app) {
 
-  app.get("/api/signup", function (req, res) {
-    db.User.create({
-      username: req.body.username,
-      password: req.body.password
-    })
-      .then(function () {
-        res.redirect(307, "/login");
+    app.post("/api/signup", function(req, res) {
+        db.User.create({
+          username: req.body.username,
+          password: req.body.password,
+          bio: req.body.bio
+        })
+          .then(function(data) {
+            res.redirect(307, "/api/login");
+          })
+          .catch(function(err) {
+            console.log(err);
+            res.status(401).json(err);
+          });
+    });
+
+    app.post("/api/interests", function(req, res) {
+      db.User_interests.create({
+        user_id: req.user.id,
+        interest_id: req.body.interest_id
       })
-      .catch(function (err) {
-        res.status(401).json(err);
-      });
-  });
+        .then(function(data) {
+          res.send(data);
+        })
+        .catch(function(err) {
+          console.log(err);
+          res.status(401).json(err);
+        });
+    });
 
-  app.post("/api/login", passport.authenticate("local"), function (req, res) {
-    res.json(req.user);
-  });
+    app.post("/api/login", passport.authenticate("local"), function(req, res) { 
+      res.json(req.user);
+    });
 
-  app.post("/api/signup", passport.authenticate("local"), function (req, res) {
-
-  });
-
-  app.get("/api/user", function (req, res) {
-    db.User.find({})
-      .then(function (dbUser) {
+    app.get("/api/user", function(req, res) {
+      db.User.find({})
+      .then(function(dbUser) {
         res.json(dbUser);
       });
   });
@@ -42,16 +54,17 @@ module.exports = function (app) {
       });
   });
 
-  app.get("/api/username", function(req,res) {
-    console.log("GET USERNAME:", req.body)
-    var data = {
-      // username: req.user.username
-      username: "usertest1",
-      bio: "it works woohoo"
-    }
-    res.render("profile", data)
+  // app.get("/api/username", function(req,res) {
+  //   console.log("GET USERNAME:", req.user.username)
+  //   var data = {
+  //     username: req.user.username,
+  //     bio: req.user.bio
+  //     // username: "usertest1",
+  //     // bio: "it works woohoo"
+  //   }
+  //   res.render("profile", data)
 
-  });
+  // });
 
   app.post("/api/user", function (req, res) {
     db.User.create({
@@ -88,4 +101,9 @@ module.exports = function (app) {
 
   });
 
-};
+    // GET route for logout function, will probably be useful later.
+    // app.get("/logout", function(req, res) {
+    //   req.logout();
+    //   res.redirect("/");
+    // });
+}
