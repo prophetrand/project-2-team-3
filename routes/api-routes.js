@@ -125,31 +125,31 @@ module.exports = function (app) {
   //   res.redirect("/");
   // });
 
-  // app.get("/api/interests/:id", function (req, res) {
-  //   db.User.findAll({
-  //     include: {
-  //       model: db.User,
-  //       // where: {
-  //       //   id: req.params.id
-  //       // },
-  //       through: {
-  //         where: {
-  //           user_id: req.params.id
-  //         }
-  //       },
-  //       as: "Interests"
-  //     }
-  //   }).then(data => {
-  //     console.log(data[0].dataValues.Interests);
-  //     var users = [];
-  //     for (var i = 0; i < data.length; i++) {
-  //       users.push(data[i].dataValues)
-  //     }
-  //     res.render("profile");
-  //   }).catch(function(err) {
-  //     console.log(err);
-  //   })
-  // });
+  app.get("/api/interests/:id", function (req, res) {
+    db.User.findAll({
+      include: {
+        model: db.User,
+        // where: {
+        //   id: req.params.id
+        // },
+        through: {
+          where: {
+            user_id: req.params.id
+          }
+        },
+        as: "Interests"
+      }
+    }).then(data => {
+      console.log(data[0].dataValues.Interests);
+      var users = [];
+      for (var i = 0; i < data.length; i++) {
+        users.push(data[i].dataValues)
+      }
+      res.render("profile");
+    }).catch(function(err) {
+      console.log(err);
+    })
+  });
 
 
   // GET route for logout function
