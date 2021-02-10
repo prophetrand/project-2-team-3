@@ -1,12 +1,10 @@
 var path = require("path");
 
 var isAuthenticated = require("../config/middleware/isAuthenticated");
-const matches = require("../models/matches");
 
 module.exports = function(app) {
 
     app.get("/", function(req, res) {
-      
         // Welcome page and login function.
         if (req.user) {
             res.redirect("/profile");
@@ -14,8 +12,8 @@ module.exports = function(app) {
         res.render("login");
     });
 
-    app.get("/profile/user/:id", isAuthenticated, function(req, res) {
-
+    app.get("/profile", function(req, res) {
+        res.render("profile");
     });
 
     app.get("/signup", function(req, res) {
@@ -23,7 +21,7 @@ module.exports = function(app) {
     });
 
     app.get("/matches", function(req, res) {
-        res.render("matches");
+          res.render("matches");
     });
 
     app.get("/connect", function(req, res) {
