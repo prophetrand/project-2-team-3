@@ -66,14 +66,14 @@ module.exports = function (app) {
       });
   });
 
-    app.get("/api/connect", function(req, res) {
-      db.Matches.create({
-        user_id: req.user.id,
-        match_id: req.body.id
-      }).then(data => {
-        res.redirect(307, "/profile");
-      });
+  app.get("/api/connect", function (req, res) {
+    db.Matches.create({
+      user_id: req.user.id,
+      match_id: req.body.id
+    }).then(data => {
+      res.redirect(307, "/profile");
     });
+  });
   // Put route for updating users
   app.put("/api/user/:id", function (req, res) {
     db.User.update({
@@ -112,17 +112,30 @@ module.exports = function (app) {
   //   res.redirect("/");
   // });
 
-  // app.get("/api/interests", function(req, res) {
-  //   User_interests.findAll({
+  // app.get("/api/interests/:id", function (req, res) {
+  //   db.User.findAll({
+  //     include: {
+  //       model: db.User,
+  //       // where: {
+  //       //   id: req.params.id
+  //       // },
+  //       through: {
   //         where: {
-  //             user_id: req.user.user_id
-  //         }, 
-  //         include: [
-  //           {
-  //             model: Interests
-  //           }
-  //         ],
-  //     });
+  //           user_id: req.params.id
+  //         }
+  //       },
+  //       as: "Interests"
+  //     }
+  //   }).then(data => {
+  //     console.log(data[0].dataValues.Interests);
+  //     var users = [];
+  //     for (var i = 0; i < data.length; i++) {
+  //       users.push(data[i].dataValues)
+  //     }
+  //     res.render("profile");
+  //   }).catch(function(err) {
+  //     console.log(err);
+  //   })
   // });
 
 

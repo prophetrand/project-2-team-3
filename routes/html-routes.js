@@ -28,7 +28,7 @@ module.exports = function (app) {
             res.render("profile", hbsData);
         });
 
-         // User_interests.findAll({
+        // User_interests.findAll({
         //     where: {
         //         user_id: req.user.id
         //     },
@@ -44,27 +44,27 @@ module.exports = function (app) {
         res.render("signup");
     });
 
-    app.get("/matches", function(req, res) {
-          res.render("matches");
+    app.get("/matches", function (req, res) {
+        res.render("matches");
     });
 
     // Route to retrieve all users with that interest
     app.get("/connect/:choice", function (req, res) {
         db.User
-          .findAll({
-            where: {
-              interests: req.params.choice
-            }
-          })
-          .then(data => {
-            var users = [];
-            for(var i = 0; i < data.length; i++){
-              users.push(data[i].dataValues);
-            }
-            console.log(users);
-            res.render("connections", users);
-          });
-      });
+            .findAll({
+                where: {
+                    interests: req.params.choice
+                }
+            })
+            .then(data => {
+                var users = [];
+                for (var i = 0; i < data.length; i++) {
+                    users.push(data[i].dataValues);
+                }
+                console.log(users);
+                res.render("connections", users);
+            });
+    });
 
     app.get("/connect", function (req, res) {
         res.render("connect");
