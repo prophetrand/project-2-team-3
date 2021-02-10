@@ -4,17 +4,17 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-              len: [1]
+                len: [1]
             }
         },
-    },{
+    }, {
         freezeTableName: true
     });
-    Interests.associate = function(models) {
+    Interests.associate = function (models) {
         Interests.belongsToMany(models.User, {
-         through: models.User_interests,
-         as: "User",
-         foreignKey: "interest_id"
+            through: models.User_interests,
+            as: "User",
+            foreignKey: "interest_id"
         });
     }
 
