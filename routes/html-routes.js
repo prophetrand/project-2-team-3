@@ -77,7 +77,6 @@ module.exports = function (app) {
 
             
         })
-    });
 
     // Route to retrieve all users with that interest
     app.get("/connect/:choice", function (req, res) {
