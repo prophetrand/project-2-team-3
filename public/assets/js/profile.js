@@ -4,14 +4,11 @@
 //     $.update('/api/user', image.src);
 // };
 
-// Edit button
-// Save changes button
+
+
 // saving image to page
 // editing interests
 // appending interests
-
-
-
 
 
 $(document).ready(function () {
@@ -48,21 +45,6 @@ $(document).ready(function () {
     });
 });
 
-// loginUser does a post to our "api/login" route and if successful, redirects us the the members page
-// function loginUser(username) {
-//     $.post("api/username", {
-//         username: username
-//     })
-//         .then(function () {
-//             window.location.replace("/profile");
-//             // If there's an error, log the error
-//         })
-//         .catch(function (err) {
-//             console.log(err);
-//         });
-// }
-// });
-// loginUser();
 
 
 

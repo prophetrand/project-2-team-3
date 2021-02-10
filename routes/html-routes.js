@@ -22,7 +22,7 @@ module.exports = function (app) {
     
         // User_interests.findAll({
         //     where: {
-        //         user_id: req.user_interests.user_id
+        //         user_id: req.user.id
         //     },
         //     include: [
         //         {
