@@ -40,8 +40,6 @@ $(document).ready(function () {
                 console.log(response);
                 location.reload('/profile');
         });
-        // editProfile(event);
-        // console.log("editProf" + JSON.stringify(event));
     });
 });
 
