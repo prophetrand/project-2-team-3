@@ -66,6 +66,16 @@ module.exports = function (app) {
       });
   });
 
+
+  app.get("/api/connect", function (req, res) {
+    db.Matches.create({
+      user_id: req.user.id,
+      match_id: req.body.id
+    }).then(data => {
+      res.redirect(307, "/profile");
+    });
+  });
+
   // Put route for updating users
   app.put("/api/user/:id", function (req, res) {
     db.User.update({
@@ -86,8 +96,6 @@ module.exports = function (app) {
       });
   });
 
-  app.get("/api/connect", function (req, res) { })
-
   app.get("/api/matches/:id", function (req, res) {
     db.Matches.findAll({
       where: {
@@ -97,8 +105,6 @@ module.exports = function (app) {
     }).then(function (dbMatches) {
       res.render("matches", dbMatches);
     });
-
-    app.get("/api/matches/:id", function (req, res) { })
 
   });
 

@@ -48,8 +48,26 @@ module.exports = function (app) {
           res.render("matches");
     });
 
-    app.get("/connect", function (req, res) {
+    // Route to retrieve all users with that interest
+    app.get("/connect/:choice", function (req, res) {
+        db.User
+          .findAll({
+            where: {
+              interests: req.params.choice
+            }
+          })
+          .then(data => {
+            var users = [];
+            for(var i = 0; i < data.length; i++){
+              users.push(data[i].dataValues);
+            }
+            console.log(users);
+            res.render("connections", users);
+          });
+      });
 
+    app.get("/connect", function (req, res) {
+        res.render("connect");
     });
 }
 // be sure to add back in "isAunthenticated" to routes that we want restricted.
