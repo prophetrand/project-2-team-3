@@ -8,6 +8,9 @@ module.exports = function(app) {
     app.get("/", function(req, res) {
       
         // Welcome page and login function.
+        if (req.user) {
+            res.redirect("/profile");
+        }
         res.render("login");
     });
 
@@ -20,11 +23,11 @@ module.exports = function(app) {
     });
 
     app.get("/matches", function(req, res) {
-        
-        res.render("matches")
+        res.render("matches");
     });
 
-    app.get("/connect", isAuthenticated, function(req, res) {
+    app.get("/connect", function(req, res) {
 
     });
 }
+// be sure to add back in "isAunthenticated" to routes that we want restricted.

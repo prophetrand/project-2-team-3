@@ -4,25 +4,37 @@ const matches = require("../models/matches");
 
 module.exports = function(app) {
 
-    app.get("/api/signup", function(req, res) {
+    app.post("/api/signup", function(req, res) {
         db.User.create({
           username: req.body.username,
-          password: req.body.password
+          password: req.body.password,
+          bio: req.body.bio
         })
-          .then(function() {
-            res.redirect(307, "/login");
+          .then(function(data) {
+            res.redirect(307, "/api/login");
           })
           .catch(function(err) {
+            console.log(err);
             res.status(401).json(err);
           });
     });
 
-    app.post("/api/login", passport.authenticate("local"), function(req, res) {
-        res.json(req.user);
+    app.post("/api/interests", function(req, res) {
+      db.User_interests.create({
+        user_id: req.user.id,
+        interest_id: req.body.interest_id
+      })
+        .then(function(data) {
+          res.send(data);
+        })
+        .catch(function(err) {
+          console.log(err);
+          res.status(401).json(err);
+        });
     });
 
-    app.post("/api/signup", passport.authenticate("local"), function(req, res) {
-    
+    app.post("/api/login", passport.authenticate("local"), function(req, res) { 
+      res.json(req.user);
     });
 
     app.get("/api/user", function(req, res) {
@@ -37,17 +49,6 @@ module.exports = function(app) {
         where: {
           id: req.params.id
         }
-      })
-      .then(function(dbUser) {
-        res.json(dbUser);
-      });
-    });
-
-    app.post("/api/user", function(req, res) {
-      db.User.create({
-        profPic: req.body.profPic,
-        interests: req.body.interests,
-        bio: req.body.bio
       })
       .then(function(dbUser) {
         res.json(dbUser);
@@ -77,13 +78,18 @@ module.exports = function(app) {
     app.get("/api/matches/:id", function(req, res) {
          db.Matches.findAll({
            where: {
-              user_id: req.user_id
+              match_id: req.user_id
            },
                       
          }).then(function(dbMatches){
-           res.json(dbMatches);
+           res.render("matches",dbMatches);
          });
 
     });
 
-};
+    // GET route for logout function, will probably be useful later.
+    // app.get("/logout", function(req, res) {
+    //   req.logout();
+    //   res.redirect("/");
+    // });
+}

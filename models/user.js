@@ -1,10 +1,12 @@
 var bcrypt = require("bcryptjs");
+const Interests = require("./interests");
 
 module.exports = function (sequelize, DataTypes) {
     var User = sequelize.define("User", {
         username: {
             type: DataTypes.STRING,
             allowNull: false,
+            unique: true,
             validate: {
                 len: [1]
             }
@@ -32,6 +34,14 @@ module.exports = function (sequelize, DataTypes) {
     }, {
         freezeTableName: true
     });
+
+    User.associate = function(models) {
+        User.belongsToMany(models.Interests, {
+        through: models.User_interests,
+        as: "Interests",
+        foreignKey: "user_id",
+        });
+    }
 
     User.prototype.validPassword = function (password) {
         return bcrypt.compareSync(password, this.password);

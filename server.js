@@ -3,6 +3,7 @@ const path = require("path");
 var express = require("express");
 var session = require("express-session");
 var exphbs = require("express-handlebars");
+
 var passport = require("./config/passport");
 var PORT = process.env.PORT || 3000;
 var db = require("./models");
@@ -10,6 +11,7 @@ var app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
+
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 // Initializing session to keep track of user's login session
