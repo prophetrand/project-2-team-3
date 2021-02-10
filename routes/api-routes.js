@@ -65,7 +65,6 @@ module.exports = function (app) {
       });
   });
 
-<<<<<<< HEAD
     app.get("/api/connect", function(req, res) {
       db.Matches.create({
         user_id: req.user.id,
@@ -74,7 +73,6 @@ module.exports = function (app) {
         res.redirect(307, "/profile");
       });
     });
-=======
   // Put route for updating users
   app.put("/api/user/:id", function (req, res) {
     db.User.update({
@@ -95,12 +93,8 @@ module.exports = function (app) {
       });
   });
 
-  app.get("/api/connect", function (req, res) {
-
-  });
 
   app.get("/api/matches/:id", function (req, res) {
->>>>>>> b9c625610e7f4a285438860fbfe483734cd97d9e
 
   });
 
