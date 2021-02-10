@@ -52,7 +52,6 @@ CODE SNIPPET
 This project is covered under MIT.
 
 ## Authors
-**UC Berkeley Coding Bootcamp**
 
 **Jessny Joseph** 
 * [Github](https://github.com/jessnyj)
