@@ -101,7 +101,8 @@ a {
   text-align: center;
   font-size: 20px;
   font-family: "lucida handwriting";
-
+  width:100%;
+  height:auto;
 
 }
 
@@ -110,6 +111,6 @@ position: relative;
   /* margin-left: 18%; 
   margin-right: 8%; */
   margin-top: 20px;
-  margin-left: 10%;
+  margin-left: 25%;
 }
 
