@@ -16,7 +16,7 @@ module.exports = function (app) {
     });
 
     // Gets profile page with their bio, profile pic, username, and interests
-    app.get("/profile", function (req, res) {
+    app.get("/profile", isAuthenticated, function (req, res) {
         db.User.findOne({
             where: {
                 id: req.user.id,
@@ -59,7 +59,7 @@ module.exports = function (app) {
         res.render("signup");
     });
 
-    app.get("/matches", function (req, res) {
+    app.get("/matches", isAuthenticated, function (req, res) {
         db.Matches.findAll({
             where: {
                 user_id: req.user.id
@@ -90,39 +90,39 @@ module.exports = function (app) {
 
 
         })
-
-        // Route to retrieve all users with that interest
-        app.get("/connect/:choice", function (req, res) {
-            db.User.findAll({
-                include: {
-                    model: db.Interests,
-                    through: {
-                        where: {
-                            interest_id: req.params.choice,
-                        }
-                    },
-                    as: "Interests"
-                }
-            }).then(data => {
-                console.log(data[0].dataValues.Interests);
-                var users = [];
-                for (var i = 0; i < data.length; i++) {
-                    if (data[i].dataValues.Interests.length !== 0) {
-                        users.push(data[i].dataValues);
+    });
+    // Route to retrieve all users with that interest
+    app.get("/connect/:choice", isAuthenticated, function (req, res) {
+        db.User.findAll({
+            include: {
+                model: db.Interests,
+                through: {
+                    where: {
+                        interest_id: req.params.choice,
                     }
+                },
+                as: "Interests"
+            }
+        }).then(data => {
+            console.log(data[0].dataValues.Interests);
+            var users = [];
+            for (var i = 0; i < data.length; i++) {
+                if (data[i].dataValues.Interests.length !== 0) {
+                    users.push(data[i].dataValues);
                 }
-                console.log(users);
-                var usersObj = { users: users };
+            }
+            console.log(users);
+            var usersObj = { users: users };
 
-                res.render("connections", usersObj);
+            res.render("connections", usersObj);
 
-            }).catch(function (err) {
-                console.log(err);
-            });
+        }).catch(function (err) {
+            console.log(err);
         });
+    });
 
-        app.get("/connect", function (req, res) {
-            res.render("connect");
-        });
-    }
+    app.get("/connect", isAuthenticated, function (req, res) {
+        res.render("connect");
+    });
+}   
 // be sure to add back in "isAunthenticated" to routes that we want restricted.

@@ -1,3 +1,5 @@
+USE love_db;
+
 INSERT INTO love_db.Interests(name, createdAt, updatedAt)
 VALUES("Arts","2020-01-01 10:10:10", "2020-01-01 10:10:10");
 INSERT INTO love_db.Interests(name, createdAt, updatedAt)
