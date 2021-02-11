@@ -78,7 +78,6 @@ module.exports = function (app) {
   // Put route for updating users
   app.put("/api/user/:id", function (req, res) {
     db.User.update({
-      // interests: req.body.interests,
       bio: req.body.bio,
     }, {
       where: {
@@ -113,7 +112,6 @@ module.exports = function (app) {
       res.redirect(307, "/profile");
     });
   });
-
 
   // GET route for logout function
   app.get("/logout", function (req, res) {
