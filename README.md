@@ -17,10 +17,10 @@
 
 ## Deployed Link
 * Click this link to view the site.
-[Deployed Link]()
+[Deployed Link](https://loveconnect14.herokuapp.com/)
 
 ## Site Gif
-![Site]()
+![Site](public/assets/images/love-connect.gif)
 
 ## Technologies Used
 * javascript
@@ -30,22 +30,66 @@
 * Express
 * NodeJs
 * Handlebars
+* Bootstrap
+* passport
+* bideo.js
+* bycrypt.js
 * 100-K Faces API
+* Canva
+* Pexels
 * Heroku
 * Github
 
 ## Description
-
-
+This is a full stack dating application that allows a user to sign in, select their interests, upload and edit their bio, find other users based off of their interersts, and match with others. 
 
 ## Work Involved
-
+For this application, the front-end aspects of the site were developed using the Bootstrap framework. Utilizing sequelize, we created a variety of models that allowed for storing of data within the MySQL database, and associations within these models to allow for matches, and displaying user interests. Additional features such as the profile picture was generated using the 100-K Faces API, and the login page video using bideo.js.
 
 
 ## Code Snippet
-* INSERT DESCRIPTION OF CODE SNIPPET HERE
+* This code snippet displays the profile page api html route which allows the user to view their bio, profile picture, username, and selected interests upon signing in or creating a profile.
 ```
-CODE SNIPPET
+app.get("/profile", isAuthenticated, function (req, res) {
+        db.User.findOne({
+            where: {
+                id: req.user.id,
+            },
+        }).then(function (dbData) {
+            var hbsData = {
+                username: dbData.username,
+                bio: dbData.bio,
+                profPic: dbData.profPic,
+                id: dbData.id,
+            };
+            db.Interests.findAll({
+                include: {
+                    model: db.User,
+                    through: {
+                        where: {
+                            user_id: req.user.id,
+                        },
+                    },
+                    as: "User",
+                },
+            })
+                .then((data) => {
+                    console.log(data);
+                    var interests = [];
+                    for (var i = 0; i < data.length; i++) {
+                        if (data[i].dataValues.User.length !== 0) {
+                            interests.push(data[i].dataValues);
+                        }
+                    }
+                    hbsData.interests = interests;
+                    console.log(hbsData);
+                    res.render("profile", hbsData);
+                })
+                .catch(function (err) {
+                    console.log(err);
+                });
+        });
+    });
 ```
 
 ## License
