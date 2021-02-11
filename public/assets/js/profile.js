@@ -1,23 +1,10 @@
-// var loadFile = function (event) {
-//     var image = $('#profilePic');
-//     image.src = URL.createObjectURL(event.target.files[0]);
-//     $.update('/api/user', image.src);
-// };
-
-
-
-// saving image to page
-// editing interests
-// appending interests
-
-
 $(document).ready(function () {
 
-    function editProfile(event) {
-        // var currentProfile = $(this).data()
-        console.log("edit profile" + JSON.stringify(event));
+    // function editProfile(event) {
+    //     // var currentProfile = $(this).data()
+    //     console.log("edit profile" + JSON.stringify(event));
         
-    }
+    // }
 
     // Edit Button
     $("#saveBtn").on("click", function (event) {
@@ -42,11 +29,3 @@ $(document).ready(function () {
         });
     });
 });
-
-
-
-
-// $(document).ready(function(event) {
-// var uploadImage = $("#profilePic");
-// image.src = URL.createObjectURL(event.target.files[0]);
-// });
