@@ -31,9 +31,9 @@
     <div class="card text-center cardProfile">
         <div class="card-header"></div>
         <div class="card-body"></div>
-        <div class="row">
+        <div id="profRow" class="row">
             <div class="col-12">
-                <h2 id="member-name">{{username}}<span class="member-name"></span></h2>
+                <div><h2 id="member-name">{{username}}<span class="member-name"></span></h2></div>
 
                 {{!-- Edit Profile Button --}}
                 <button id="editBtn" type="button" class="btn btn-outline-dark" data-bs-toggle="modal"
@@ -131,7 +131,7 @@
 
 
 
-            <div id="cardRow"class="row row-cols-1 row-cols-md-3 g-4">
+            <div id="cardRow"class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
                 {{#each interests}}
                 <div class="col">
                     <div id="interests" class="card text-white bg-dark mb-3" style="max-width: 15rem;">

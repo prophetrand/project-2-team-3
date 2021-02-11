@@ -46,7 +46,7 @@ a {
 #editBtn {
   width: 25px;
   height: 25px;
-  position: relative;
+  /* position: relative; */
   float: right;
   top: 0%;
   margin-right: 10px;
@@ -89,7 +89,7 @@ a {
 }
 
 #member-name {
-  text-align: center;
+  /* text-align: center; */
   font-family: garamond;
   font-size: 55px;
   font-weight: bold;
@@ -112,5 +112,10 @@ position: relative;
   margin-right: 8%; */
   margin-top: 20px;
   margin-left: 25%;
+  margin-right: 25%;
 }
 
+#profRow {
+  display: flex;
+  flex-direction: column;
+}
