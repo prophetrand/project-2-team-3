@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "node server.js",
+    "start:dev": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -22,12 +25,19 @@
     "express": "^4.17.1",
     "express-handlebars": "^5.2.0",
     "express-session": "^1.17.1",
+<<<<<<< HEAD
     "i": "^0.3.6",
+=======
+    "if-env": "^1.0.4",
+>>>>>>> 42f6ded321763574f937cb1a8c894b5a46e68b8d
     "mysql": "^2.18.1",
     "mysql2": "^2.2.5",
     "npm": "^7.5.3",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "sequelize": "^6.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
   }
 }

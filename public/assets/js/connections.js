@@ -5,7 +5,7 @@ $(document).ready(function() {
         $.post("/api/connect", {
             match_id: connect
         }).then(data => {
-            window.location.replace("/profile");
+            window.location.replace("/matches");
         });
     });
 });
