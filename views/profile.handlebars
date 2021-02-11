@@ -23,23 +23,20 @@
         <a class="nav-link text-end" href="/logout">Logout</a>
     </div>
 </nav>
-{{!-- Header Image --}}
 
+{{!-- Header Image --}}
 <img src="/assets/images/love-connect.png" class="img-fluid header-img" alt="...">
 
-
+{{!-- Body of Profile --}}
 <div class="container">
     <div class="card text-center cardProfile">
         <div class="card-header"></div>
         <div class="card-body"></div>
-        <div class="row">
+        <div id="profRow" class="row">
             <div class="col-12">
-                <h2 id="member-name">{{username}}<span class="member-name"></span></h2>
-                {{!-- Upload Image --}}
-                {{!-- <p><input type="file" accept="image/*" name="image" id="file" onchange="loadFile(event)"
-                        style="display: none;"></p>
-                <p><label for="file" style="cursor: pointer;">Upload Image</label></p>
-                <p><img id="profilePic" width="200" /></p> --}}
+                <div>
+                    <h2 id="member-name">{{username}}<span class="member-name"></span></h2>
+                </div>
 
                 {{!-- Edit Profile Button --}}
                 <button id="editBtn" type="button" class="btn btn-outline-dark" data-bs-toggle="modal"
@@ -64,8 +61,8 @@
                                 {{!-- Update Bio Feature --}}
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Bio</span>
-                                    <input id="newBio" type="text" class="form-control" aria-label="Sizing example input"
-                                        aria-describedby="inputGroup-sizing-default">
+                                    <input id="newBio" type="text" class="form-control"
+                                        aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                                 </div>
                                 {{!-- Upload File Feature --}}
                                 <div id="modalUpload" class="input-group mb-3">
@@ -112,7 +109,8 @@
                             {{!-- Buttons Within Modal --}}
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button data-id="{{id}}" id="saveBtn" type="submit" class="btn btn-primary">Save changes</button>
+                                <button data-id="{{id}}" id="saveBtn" type="submit" class="btn btn-primary">Save
+                                    changes</button>
                             </div>
                         </div>
                     </div>
@@ -131,14 +129,23 @@
                     </div>
                 </div>
             </div>
-        <div class="row">
-            <ul>
-            </ul>
-        </div>
         </div>
 
-
+        {{!-- Interest Cards --}}
+        <div id="cardRow" class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
+            {{#each interests}}
+            <div class="col">
+                <div id="interests" class="card text-white bg-dark mb-3" style="max-width: 15rem;">
+                    <div class="card-header">My Interests</div>
+                    <div class="card-body">
+                        <p class="card-text">{{name}}</p>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
     </div>
+</div>
 
-
+{{!-- Link to client side js --}}
 <script src="assets/js/profile.js" type="text/javascript"></script>
