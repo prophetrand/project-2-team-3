@@ -111,5 +111,6 @@ module.exports = function (app) {
     app.get("/connect", function (req, res) {
         res.render("connect");
     });
+})
 }
 // be sure to add back in "isAunthenticated" to routes that we want restricted.
