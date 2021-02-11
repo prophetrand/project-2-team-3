@@ -20,13 +20,21 @@
         </li>
       </ul>
     </div>
+    <a class="nav-link text-end" href="/logout">Logout</a>
   </div>
 </nav>
 
 <div class="container">
-  <div class="card-deck">
+  <div class="card-group">
     {{#each users}}
-    {{>user/user-card}}
+    <div class="card text-center" style="min-width: 18rem; max-width: 18rem; outline:black">
+      <div class="card-header">{{username}}</div>
+      <img class="card-img-top" src="{{profPic}}" alt="profile-pic">
+      <hr>
+      <div class="card-body">
+        <p class="card-text">{{bio}}</p>
+      </div>
+    </div>
     {{/each}}
   </div>
 </div>

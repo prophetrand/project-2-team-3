@@ -1,5 +1,6 @@
 var path = require("path");
 var db = require("../models");
+var Op = db.Sequelize.Op;
 
 var isAuthenticated = require("../config/middleware/isAuthenticated");
 const interests = require("../models/interests");
@@ -59,40 +60,69 @@ module.exports = function (app) {
     });
 
     app.get("/matches", function (req, res) {
-        res.render("matches");
-    });
-
-    // Route to retrieve all users with that interest
-    app.get("/connect/:choice", function (req, res) {
-        db.User.findAll({
-            include: {
-                model: db.Interests,
-                through: {
-                    where: {
-                        interest_id: req.params.choice,
-                    }
-                },
-                as: "Interests"
+        db.Matches.findAll({
+            where: {
+                user_id: req.user.id
             }
         }).then(data => {
-            console.log(data[0].dataValues.Interests);
-            var users = [];
+            var arr = [];
+
             for (var i = 0; i < data.length; i++) {
-                if (data[i].dataValues.Interests.length !== 0) {
-                    users.push(data[i].dataValues);
-                }
+                arr.push(data[i].dataValues.match_id);
             }
-            console.log(users);
-            var usersObj = { users: users };
 
-            res.render("connections", usersObj);
-        }).catch(function (err) {
-            console.log(err);
+            db.User.findAll({
+                where: {
+                    id: {
+                        [Op.in]: arr
+                    }
+                }
+            }).then(data2 => {
+                var users = [];
+                for (var j = 0; j < data2.length; j++) {
+                    users.push(data2[j].dataValues);
+                }
+                console.log(users);
+                var usersObj = { users: users };
+
+                res.render("matches", usersObj);
+            });
+
+
+        })
+
+        // Route to retrieve all users with that interest
+        app.get("/connect/:choice", function (req, res) {
+            db.User.findAll({
+                include: {
+                    model: db.Interests,
+                    through: {
+                        where: {
+                            interest_id: req.params.choice,
+                        }
+                    },
+                    as: "Interests"
+                }
+            }).then(data => {
+                console.log(data[0].dataValues.Interests);
+                var users = [];
+                for (var i = 0; i < data.length; i++) {
+                    if (data[i].dataValues.Interests.length !== 0) {
+                        users.push(data[i].dataValues);
+                    }
+                }
+                console.log(users);
+                var usersObj = { users: users };
+
+                res.render("connections", usersObj);
+
+            }).catch(function (err) {
+                console.log(err);
+            });
         });
-    });
 
-    app.get("/connect", function (req, res) {
-        res.render("connect");
-    });
-}
+        app.get("/connect", function (req, res) {
+            res.render("connect");
+        });
+    }
 // be sure to add back in "isAunthenticated" to routes that we want restricted.

@@ -92,6 +92,7 @@ a {
   font-weight: bold;
 }
 
+<<<<<<< HEAD
 #interests {
   text-align: center;
   font-size: 20px;
@@ -111,3 +112,5 @@ a {
   display: flex;
   flex-direction: column;
 }
+=======
+>>>>>>> 4108ec9154cbfb795db9dda4750b2f79436174aa
